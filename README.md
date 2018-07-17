@@ -5,3 +5,6 @@ Kapu Resync Forked Node
 sudo apt-get install jq
 # to launch it when the node is in stuck (forkato) do:
 bash resync.sh
+
+
+SPECIAL Thanks @Corsaro
