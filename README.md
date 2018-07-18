@@ -3,6 +3,7 @@ Kapu Resync Forked Node
 *** an advanced script to automatically rebuild the kapu node, from the 5 highest peers ***
 # first
 sudo apt-get install jq
+
 sudo apt-get install psmisc
 # download resync in kapu-node/:
 cd 
