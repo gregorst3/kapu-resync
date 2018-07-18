@@ -13,6 +13,7 @@ cd kapu-node
 wget https://raw.githubusercontent.com/kapucoin/kapu-resync/master/resync.sh
 # to launch it when the node is in stuck (forkato) do:
 cd kapu-node
+
 bash resync.sh
 
 
