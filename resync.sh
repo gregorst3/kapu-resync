@@ -15,7 +15,7 @@ function SyncPeers()
         fi
 
         echo Getting top 5 peers
-        PEERS=$(curl -s "http://127.0.0.1:9700//api/peers" | jq '[.peers[]]' | jq 'sort_by(-.height)' | jq '.[] |= del(.status,.os,.version,.errors,.broadhash,.clock,.delay,.nonce,.height) ' | jq '[limit(5;.[])]')
+        PEERS=$(curl -s "http://walletapi.kapu.one/api/peers" | jq '[.peers[]]' | jq 'sort_by(-.height)' | jq '.[] |= del(.status,.os,.version,.errors,.broadhash,.clock,.delay,.nonce,.height) ' | jq '[limit(5;.[])]')
         echo Modifying config file
         jq ".peers.list = $PEERS" "$configfile-original" > config.mainnet.json
 
