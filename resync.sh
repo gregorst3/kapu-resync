@@ -7,6 +7,8 @@
 #
 configfile='config.mainnet.json'
 SRV="http://127.0.0.1:9700"
+sudo apt-get install jq -y
+sudo apt-get install psmisc -y
 function SyncPeers()
 {
         echo "Backing up config file (if necessary)"
