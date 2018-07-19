@@ -26,19 +26,19 @@ function Rebuild()
         echo Rebuilding
         cd ~/kapu-node
         rm kapu_db.snapshot_main.tar
-		wget http://www.kapu.one/current/kapu_db.snapshot_main.tar 
+		wget http://www.kapu.one/current/kapu_db.snapshot_main.tar
 		forever stop app.js
 		killall node
 		sudo pkill -u postgres
 		sudo /etc/init.d/postgresql restart
-		sudo -u postgres dropdb --if-exists kapu_mainnet 
+		sudo -u postgres dropdb --if-exists kapu_mainnet
 		sudo -u postgres createdb kapu_mainnet
 		pg_restore -O -j 8 -d kapu_mainnet kapu_db.snapshot_main.tar 2>/dev/null
 		forever start app.js --genesis genesisBlock.mainnet.json --config config.mainnet.json
 		rm kapu_db.snapshot_main.tar
         echo Sleeping 30 sec...
         sleep 30
-        
+
 
         echo Waiting for rebuild to complete...
         SYNC=$(curl -s "$SRV/api/loader/status/sync"| jq '.syncing')
@@ -56,6 +56,4 @@ function RestoreConfig()
         forever restart app.js
 }
 
-SyncPeers
 Rebuild
-RestoreConfig
