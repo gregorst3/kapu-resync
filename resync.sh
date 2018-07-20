@@ -30,7 +30,7 @@ function Rebuild()
         rm kapu_db.snapshot_main.tar
 		wget http://www.kapu.one/current/kapu_db.snapshot_main.tar
 		forever stop app.js
-		killall node
+		sudo killall node
 		sudo pkill -u postgres
 		sudo /etc/init.d/postgresql restart
 		sudo -u postgres dropdb --if-exists kapu_mainnet
